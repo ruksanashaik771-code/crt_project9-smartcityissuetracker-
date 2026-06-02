@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>notification</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Notifications</h2>
+
+{% for n in notes %}
+
+<div class="alert alert-info">
+
+    {{ n.message }}
+
+</div>
+
+{% empty %}
+
+<div class="alert alert-warning">
+
+    No notifications.
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
+
+</body>
+</html>

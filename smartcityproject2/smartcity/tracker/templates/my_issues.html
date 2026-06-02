@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>issues</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    My Issues
+</h2>
+
+<form method="GET" class="mb-3">
+
+    <input
+        type="text"
+        name="q"
+        class="form-control"
+        placeholder="Search Issue">
+
+</form>
+
+{% for issue in issues %}
+
+<div class="card mb-3 shadow">
+
+    <div class="card-body">
+
+        <h4>
+            {{ issue.title }}
+        </h4>
+
+        <p>
+            {{ issue.description }}
+        </p>
+
+        <p>
+            <b>Category:</b>
+            {{ issue.category }}
+        </p>
+
+        <p>
+            <b>Location:</b>
+            {{ issue.location }}
+        </p>
+
+        <p>
+            <b>Status:</b>
+            {{ issue.status }}
+        </p>
+
+        <p>
+            <b>Date:</b>
+            {{ issue.created_at }}
+        </p>
+
+        {% if issue.image %}
+
+        <img
+            src="{{ issue.image.url }}"
+            width="300"
+            class="img-fluid rounded">
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="alert alert-info">
+
+    No issues reported yet.
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
+
+</body>
+</html>
